@@ -32,8 +32,10 @@ public class LogisticRegressionForBasicSparseFeature {
 		JavaSparkContext jsc = new JavaSparkContext(sparkConf);
 		HiveContext hiveCtx = new HiveContext(jsc);
 		
+		Map<String, String> sparkParameter = ArgumentUtil.parseSparkConf(sparkConf);
+		
 		DataFrame trainData = Data.getData(jsc, hiveCtx, "/tmp/kdd_cup_2010/algebra_2008_2009/algebra_2008_2009_train.txt")
-				.sample(false, Double.parseDouble(parameter.get("trainDataRate")));
+				.repartition(Integer.parseInt(sparkParameter.get("spark.default.parallelism"))).sample(false, Double.parseDouble(parameter.get("trainDataRate")));
 		DataFrame predictData = Data.getData(jsc, hiveCtx, "/tmp/kdd_cup_2010/algebra_2008_2009/algebra_2008_2009_test.txt");
 		BasicSparseFeatureTranformer basicSparseFeatureTranformer = new BasicSparseFeatureTranformer(hiveCtx, jsc, trainData, predictData);
 		
