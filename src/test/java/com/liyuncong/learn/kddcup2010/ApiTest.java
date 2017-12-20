@@ -119,4 +119,11 @@ public class ApiTest {
 		map.put("l", "zhang");
 		logger.info("{}", map);
 	}
+	
+	@Test
+	public void test13() {
+		Logger logger = LoggerFactory.getLogger("test");
+		Row row = RowFactory.create("1", "liyuncong");
+		logger.info("row:{}", row);
+	}
 }

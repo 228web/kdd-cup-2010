@@ -51,9 +51,9 @@ import scala.Tuple2;
  * @author liyuncong
  *
  */
-public class BasicSparseFeatureTranformer implements Serializable{
+public class FeatureCombinationTranformer implements Serializable{
 	private static final long serialVersionUID = -499548205482995752L;
-	private transient Logger logger = LoggerFactory.getLogger(BasicSparseFeatureTranformer.class);
+	private transient Logger logger = LoggerFactory.getLogger(FeatureCombinationTranformer.class);
 	private static List<String> selectedFeatureColumns = new LinkedList<>();
 	private static final int opportunityDefaultIndex = 7;
 	private transient HiveContext hiveContext;
@@ -71,9 +71,19 @@ public class BasicSparseFeatureTranformer implements Serializable{
 		selectedFeatureColumns.add("kcDefault");
 		selectedFeatureColumns.add("problemView");
 		selectedFeatureColumns.add("opportunityDefault");
+		selectedFeatureColumns.add("concat(anonStudentId, '_', unitName)");
+		selectedFeatureColumns.add("concat(unitName, '_', sectionName)");
+		selectedFeatureColumns.add("concat(sectionName, '_', problemName)");
+		selectedFeatureColumns.add("concat(problemName, '_', stepName)");
+		selectedFeatureColumns.add("concat(anonStudentId, '_', unitName, '_', sectionName)");
+		selectedFeatureColumns.add("concat(unitName, '_', sectionName, '_', problemName)");
+		selectedFeatureColumns.add("concat(sectionName, '_', problemName, '_', stepName)");
+		selectedFeatureColumns.add("concat(anonStudentId, '_', unitName, '_', sectionName, '_', problemName)");
+		selectedFeatureColumns.add("concat(unitName, '_', sectionName, '_', problemName, '_', stepName)");
+
 	}
 	
-	public BasicSparseFeatureTranformer(HiveContext hiveContext, JavaSparkContext sparkContext, DataFrame trainData,
+	public FeatureCombinationTranformer(HiveContext hiveContext, JavaSparkContext sparkContext, DataFrame trainData,
 			DataFrame predictData) {
 		super();
 		this.hiveContext = hiveContext;
