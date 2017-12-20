@@ -222,7 +222,7 @@ public class OneStepData  implements Serializable{
 					field.set(oneStepData, value);
 				}
 			} else {
-				if (!"".equals(element)) {
+				if (!"".equals(element.trim())) {
 					field.set(oneStepData, dealWithArrtributeWithComma(element));
 				}
 			}
@@ -247,6 +247,6 @@ public class OneStepData  implements Serializable{
 		if (StringUtils.isBlank(arrtribute)) {
 			throw new IllegalArgumentException();
 		}
-		return arrtribute.replaceAll(",", " ").trim();
+		return arrtribute.replaceAll(",", " ");
 	}
 }

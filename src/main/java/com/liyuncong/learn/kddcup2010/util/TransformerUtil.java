@@ -47,7 +47,7 @@ public class TransformerUtil implements Serializable{
 		return dataTransformProcess.execute(writables);
 	}
 	
-	private static List<Writable> strintToWritable(String tagCsv) throws IOException, InterruptedException {
+	public static List<Writable> strintToWritable(String tagCsv) throws IOException, InterruptedException {
 		Objects.requireNonNull(tagCsv);
 		RecordReader recordReader = new CSVRecordReader();
 		recordReader.initialize(new StringSplit(tagCsv));
@@ -57,7 +57,7 @@ public class TransformerUtil implements Serializable{
         return new ArrayList<>(next);
 	}
 	
-	private static String writablesToString(List<Writable> writables) throws Exception {
+	public static String writablesToString(List<Writable> writables) throws Exception {
 		Objects.requireNonNull(writables);
 		WritablesToStringFunction writablesToStringFunction = new WritablesToStringFunction(",");
 		return writablesToStringFunction.call(writables);

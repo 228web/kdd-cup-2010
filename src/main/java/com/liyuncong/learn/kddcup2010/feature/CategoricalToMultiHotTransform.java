@@ -8,6 +8,7 @@ import java.util.Set;
 import org.datavec.api.transform.transform.categorical.CategoricalToOneHotTransform;
 import org.datavec.api.writable.IntWritable;
 import org.datavec.api.writable.Writable;
+import org.nd4j.shade.jackson.annotation.JsonProperty;
 
 public class CategoricalToMultiHotTransform extends CategoricalToOneHotTransform{
 
@@ -15,7 +16,7 @@ public class CategoricalToMultiHotTransform extends CategoricalToOneHotTransform
 	
 	private String delimiter;
 
-	public CategoricalToMultiHotTransform(String columnName, String delimiter) {
+	public CategoricalToMultiHotTransform(@JsonProperty("columnName")String columnName, @JsonProperty("delimiter")String delimiter) {
 		super(columnName);
 		this.delimiter = delimiter;
 	}

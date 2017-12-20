@@ -6,12 +6,16 @@ import java.util.List;
 import org.datavec.api.transform.transform.categorical.CategoricalToOneHotTransform;
 import org.datavec.api.writable.IntWritable;
 import org.datavec.api.writable.Writable;
+import org.nd4j.shade.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+
+@Data
 public class DealWithUnknownStateCategoricalToMultiHotTransform extends CategoricalToOneHotTransform{
 
 	private static final long serialVersionUID = 4029211324862642655L;
 
-	public DealWithUnknownStateCategoricalToMultiHotTransform(String columnName) {
+	public DealWithUnknownStateCategoricalToMultiHotTransform(@JsonProperty("columnName") String columnName) {
 		super(columnName);
 	}
 	
@@ -35,7 +39,7 @@ public class DealWithUnknownStateCategoricalToMultiHotTransform extends Categori
 	                String str = w.toString();
 	                Integer classIdx = getStatesMap().get(str);
 	                for (int j = 0; j < n; j++) {
-	                    if (j == classIdx)
+	                    if (classIdx != null && j == classIdx)
 	                        out.add(new IntWritable(1));
 	                    else
 	                        out.add(new IntWritable(0));

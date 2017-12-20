@@ -1,7 +1,9 @@
 package com.liyuncong.learn.kddcup2010;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.spark.sql.Row;
@@ -11,6 +13,8 @@ import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 用于测试不确定api功能
@@ -86,5 +90,33 @@ public class ApiTest {
 	@Test
 	public void test8() {
 		System.out.println(Double.valueOf(""));
+	}
+	
+	@Test
+	public void test9() {
+		String[] array = null;
+		System.out.println(array[0]);
+	}
+	
+	@Test
+	public void test10() {
+		String string = "";
+		System.out.println(string.split(":")[0]);
+	}
+	
+	@Test
+	public void test11() {
+		Logger logger = LoggerFactory.getLogger("test");
+		String string = null;
+		logger.info("{}", string);
+	}
+	
+	@Test
+	public void test12() {
+		Logger logger = LoggerFactory.getLogger("test");
+		Map<String, String> map = new HashMap<>();
+		map.put("li", "wang");
+		map.put("l", "zhang");
+		logger.info("{}", map);
 	}
 }

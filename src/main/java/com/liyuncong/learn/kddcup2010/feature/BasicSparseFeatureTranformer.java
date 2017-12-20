@@ -1,8 +1,10 @@
 package com.liyuncong.learn.kddcup2010.feature;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,6 +31,7 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
+import org.datavec.api.split.StringSplit;
 import org.datavec.api.transform.TransformProcess;
 import org.datavec.api.transform.analysis.DataAnalysis;
 import org.datavec.api.transform.schema.Schema;
@@ -50,13 +53,14 @@ import scala.Tuple2;
  */
 public class BasicSparseFeatureTranformer implements Serializable{
 	private static final long serialVersionUID = -499548205482995752L;
-	private Logger logger = LoggerFactory.getLogger(BasicSparseFeatureTranformer.class);
+	private transient Logger logger = LoggerFactory.getLogger(BasicSparseFeatureTranformer.class);
 	private static List<String> selectedFeatureColumns = new LinkedList<>();
+	private static final int opportunityDefaultIndex = 7;
 	private transient HiveContext hiveContext;
 	private transient JavaSparkContext sparkContext;
-	private DataFrame trainData;
-	private DataFrame predictData;
-	private TransformProcess featureTransformProcess;
+	private transient DataFrame trainData;
+	private transient DataFrame predictData;
+	private transient TransformProcess featureTransformProcess;
 
 	static {
 		selectedFeatureColumns.add("anonStudentId");
@@ -107,7 +111,7 @@ public class BasicSparseFeatureTranformer implements Serializable{
 		logger.info("featureTransformProcess:{}", featureTransformProcess.toJson());
 	}
 
-	private String sumOpportunity(String opportunity) {
+	private static String sumOpportunity(String opportunity) {
 		Objects.requireNonNull(opportunity);
 		double sum = 0;
 		for(String value : opportunity.split("~~")) {
@@ -135,9 +139,11 @@ public class BasicSparseFeatureTranformer implements Serializable{
 		selectedColumns.addAll(selectedFeatureColumns);
 		if (train) {
 			selectedColumns.add("correctFirstAttempt");
+		} else {
+			selectedColumns.add("row");
 		}
+		
 		DataFrame selectedData = data.selectExpr(selectedColumns.toArray(new String[0]));
-		final int opportunityDefaultIndex = 7;
 		
 		JavaRDD<String> tagCsvs = selectedData.toJavaRDD().map(new Function<Row, String>() {
 
@@ -148,9 +154,35 @@ public class BasicSparseFeatureTranformer implements Serializable{
 				return rowToOriginalFeatureCsv(row, opportunityDefaultIndex);
 			}
 		});
-
+		
 		final Broadcast<String> transformProcessJsonBc = sparkContext.broadcast(featureTransformProcess.toJson());
+		
+		List<String> invalidTagCsvs = tagCsvs.filter(new Function<String, Boolean>() {
 
+			private static final long serialVersionUID = -2480811580265381758L;
+
+			@Override
+			public Boolean call(String csv) throws Exception {
+				String tagCsv = csv.substring(0, csv.lastIndexOf(','));
+				List<Writable> writables = strintToWritable(tagCsv);
+				return writables.size() != 8;
+			}
+			
+			private List<Writable> strintToWritable(String tagCsv) throws IOException, InterruptedException {
+				Objects.requireNonNull(tagCsv);
+				RecordReader recordReader = new CSVRecordReader();
+				recordReader.initialize(new StringSplit(tagCsv));
+				Collection<Writable> next = recordReader.next();
+				if (next instanceof List)
+		            return (List<Writable>) next;
+		        return new ArrayList<>(next);
+			}
+		}).take(5);
+		for (String string : invalidTagCsvs) {
+			logger.info("invalidTagCsvs:{}", string);
+		}
+		
+		
 		return tagCsvs.mapToPair(new PairFunction<String, List<Writable>, String>() {
 
 			private static final long serialVersionUID = -3258858634428498358L;
@@ -158,22 +190,14 @@ public class BasicSparseFeatureTranformer implements Serializable{
 			@Override
 			public Tuple2<List<Writable>, String> call(String csv) throws Exception {
 				TransformProcess transformProcess = TransformProcess.fromJson(transformProcessJsonBc.getValue());
-				String tagCsv;
-				String value;
-				if (train) {
-					csv = csv.substring(csv.indexOf(',') + 1);
-					value = csv.substring(csv.lastIndexOf(',') + 1);
-					tagCsv = csv.substring(csv.lastIndexOf(','));
-				} else {
-					value = csv.substring(0, csv.indexOf(','));
-					tagCsv = csv.substring(csv.indexOf(',') + 1);
-				}
+				String tagCsv = csv.substring(0, csv.lastIndexOf(','));
+				String value = csv.substring(csv.lastIndexOf(',') + 1);
 				return new Tuple2<List<Writable>, String>(TransformerUtil.transform(transformProcess, tagCsv), value);
 			}
 		});
 	}
 
-	private String rowToOriginalFeatureCsv(Row row, int opportunityDefaultIndex) {
+	private static String rowToOriginalFeatureCsv(Row row, int opportunityDefaultIndex) {
 		List<String> result = new LinkedList<>();
 		for (int i = 0; i < row.size(); i++) {
 			if (i == opportunityDefaultIndex) {
