@@ -16,7 +16,7 @@ import com.liyuncong.learn.kddcup2010.util.ArgumentUtil;
 
 /**
  * 
-/usr/bin/spark-submit --driver-memory 16G --executor-memory 8G --num-executors 24 --executor-cores 4 --queue datateam_spark --conf spark.default.parallelism=96 --class com.liyuncong.learn.kddcup2010.experiments.LogisticRegressionForBasicSparseFeature kdd-cup-2010-jar-with-dependencies.jar trainDataRate=0.1 > LogisticRegressionForBasicSparseFeature.log 2>&1 
+/usr/bin/spark-submit --driver-memory 16G --executor-memory 8G --num-executors 24 --executor-cores 4 --queue datateam_spark --conf spark.default.parallelism=96 --class com.liyuncong.learn.kddcup2010.experiments.LogisticRegressionForBasicSparseFeature kdd-cup-2010-jar-with-dependencies.jar trainDataRate=0.1 > logisticRegressionForBasicSparseFeature.log 2>&1 
  * @author liyuncong
  *
  */

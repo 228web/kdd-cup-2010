@@ -27,24 +27,28 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/liyuncong/learn/kddcup2010/feature/BasicSparseFeatureTranformer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="426">
-              <caret line="307" column="38" lean-forward="false" selection-start-line="307" selection-start-column="38" selection-end-line="307" selection-end-column="38" />
+              <caret line="285" column="38" lean-forward="false" selection-start-line="285" selection-start-column="38" selection-end-line="285" selection-end-column="38" />
               <folding>
-                <element signature="e#3059#3298#0" expanded="true" />
-                <element signature="e#3297#3298#0" expanded="true" />
-                <element signature="e#3358#3608#0" expanded="true" />
-                <element signature="e#3607#3608#0" expanded="true" />
-                <element signature="e#6302#6541#0" expanded="true" />
-                <element signature="e#6540#6541#0" expanded="true" />
-                <element signature="e#6682#7441#0" expanded="true" />
-                <element signature="e#7440#7441#0" expanded="true" />
-                <element signature="e#8012#8562#0" expanded="true" />
-                <element signature="e#8561#8562#0" expanded="true" />
-                <element signature="e#8867#9417#0" expanded="true" />
-                <element signature="e#9416#9417#0" expanded="true" />
-                <element signature="e#11340#11586#0" expanded="true" />
-                <element signature="e#11585#11586#0" expanded="true" />
-                <element signature="e#12162#12396#0" expanded="true" />
-                <element signature="e#12395#12396#0" expanded="true" />
+                <marker date="1513234058050" expanded="true" signature="4797:6195" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="5051:5215" ph="(row) → {" />
+                <marker date="1513234058050" expanded="true" signature="5284:5290" ph="}" />
+                <marker date="1513234058050" expanded="true" signature="5431:5646" ph="(csv) → {" />
+                <marker date="1513234058050" expanded="true" signature="6184:6190" ph="}" />
+                <marker date="1513234058050" expanded="true" signature="6275:6568" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="6630:7437" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="6761:7003" ph="(featureAndLabel) → {" />
+                <marker date="1513234058050" expanded="true" signature="7305:7311" ph="}" />
+                <marker date="1513234058050" expanded="true" signature="7506:8171" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="7616:7872" ph="(featureAndRow) → {" />
+                <marker date="1513234058050" expanded="true" signature="8160:8166" ph="}" />
+                <marker date="1513234058050" expanded="true" signature="8297:9093" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="9152:9962" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="10022:10361" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="10089:10270" ph="(row) → {" />
+                <marker date="1513234058050" expanded="true" signature="10449:10800" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="10879:11171" ph="{...}" />
+                <marker date="1513234058050" expanded="true" signature="10911:11076" ph="(row) → {" />
+                <marker date="1513234058050" expanded="true" signature="11139:11145" ph="}" />
               </folding>
             </state>
           </provider>
@@ -54,8 +58,11 @@
         <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-catalyst_2.10/1.6.0/spark-catalyst_2.10-1.6.0-sources.jar!/org/apache/spark/sql/types/StructField.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="201">
-              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-              <folding />
+              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#838#870#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +153,9 @@
       <find>StructConverter</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -167,6 +177,7 @@
     <option name="width" value="1932" />
     <option name="height" value="1047" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -446,7 +457,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1932" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -458,7 +469,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -603,32 +614,39 @@
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-catalyst_2.10/1.6.0/spark-catalyst_2.10-1.6.0-sources.jar!/org/apache/spark/sql/types/StructField.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
-          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-          <folding />
+          <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#838#870#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/liyuncong/learn/kddcup2010/feature/BasicSparseFeatureTranformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="426">
-          <caret line="307" column="38" lean-forward="false" selection-start-line="307" selection-start-column="38" selection-end-line="307" selection-end-column="38" />
+          <caret line="285" column="38" lean-forward="false" selection-start-line="285" selection-start-column="38" selection-end-line="285" selection-end-column="38" />
           <folding>
-            <element signature="e#3059#3298#0" expanded="true" />
-            <element signature="e#3297#3298#0" expanded="true" />
-            <element signature="e#3358#3608#0" expanded="true" />
-            <element signature="e#3607#3608#0" expanded="true" />
-            <element signature="e#6302#6541#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6682#7441#0" expanded="true" />
-            <element signature="e#7440#7441#0" expanded="true" />
-            <element signature="e#8012#8562#0" expanded="true" />
-            <element signature="e#8561#8562#0" expanded="true" />
-            <element signature="e#8867#9417#0" expanded="true" />
-            <element signature="e#9416#9417#0" expanded="true" />
-            <element signature="e#11340#11586#0" expanded="true" />
-            <element signature="e#11585#11586#0" expanded="true" />
-            <element signature="e#12162#12396#0" expanded="true" />
-            <element signature="e#12395#12396#0" expanded="true" />
+            <marker date="1513234058050" expanded="true" signature="4797:6195" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="5051:5215" ph="(row) → {" />
+            <marker date="1513234058050" expanded="true" signature="5284:5290" ph="}" />
+            <marker date="1513234058050" expanded="true" signature="5431:5646" ph="(csv) → {" />
+            <marker date="1513234058050" expanded="true" signature="6184:6190" ph="}" />
+            <marker date="1513234058050" expanded="true" signature="6275:6568" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="6630:7437" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="6761:7003" ph="(featureAndLabel) → {" />
+            <marker date="1513234058050" expanded="true" signature="7305:7311" ph="}" />
+            <marker date="1513234058050" expanded="true" signature="7506:8171" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="7616:7872" ph="(featureAndRow) → {" />
+            <marker date="1513234058050" expanded="true" signature="8160:8166" ph="}" />
+            <marker date="1513234058050" expanded="true" signature="8297:9093" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="9152:9962" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="10022:10361" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="10089:10270" ph="(row) → {" />
+            <marker date="1513234058050" expanded="true" signature="10449:10800" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="10879:11171" ph="{...}" />
+            <marker date="1513234058050" expanded="true" signature="10911:11076" ph="(row) → {" />
+            <marker date="1513234058050" expanded="true" signature="11139:11145" ph="}" />
           </folding>
         </state>
       </provider>

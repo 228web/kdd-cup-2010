@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
+import com.liyuncong.learn.kddcup2010.exploratorydataanalysis.DataFiles;
 
 /**
  * 
@@ -32,5 +36,45 @@ public class FileUtil {
 			}
 		}
 		return result;
+	}
+	
+	public static BufferedReader getBufferedReader(String pathName) throws FileNotFoundException, UnsupportedEncodingException {
+		InputStream inputStream = new FileInputStream(pathName);
+		Reader reader = new InputStreamReader(inputStream, "utf-8");
+		return new BufferedReader(reader, 4096);
+	}
+	
+	public static FileLineIterator getFileLineIterator(BufferedReader bufferedReader) {
+		return new FileLineIterator(bufferedReader);
+	}
+	
+	public static class FileLineIterator implements Iterator<String> {
+		private BufferedReader bufferedReader;
+		private String nextLine;
+
+		public FileLineIterator(BufferedReader bufferedReader) {
+			this.bufferedReader = bufferedReader;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			try {
+				return (nextLine = bufferedReader.readLine()) != null;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+
+		@Override
+		public String next() {
+			return nextLine;
+		}
+
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+		
 	}
 }

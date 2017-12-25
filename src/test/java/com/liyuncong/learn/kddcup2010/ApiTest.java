@@ -1,9 +1,11 @@
 package com.liyuncong.learn.kddcup2010;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.spark.sql.Row;
@@ -125,5 +127,18 @@ public class ApiTest {
 		Logger logger = LoggerFactory.getLogger("test");
 		Row row = RowFactory.create("1", "liyuncong");
 		logger.info("row:{}", row);
+	}
+	
+	@Test
+	public void test14() {
+		Logger logger = LoggerFactory.getLogger("test");
+		Set<String> term = new HashSet<>();
+		term.add("test");
+		logger.info("term:{}", term);
+	}
+	
+	@Test
+	public void test15() {
+		System.out.println(String.format("姓名：%s", "liy"));
 	}
 }
